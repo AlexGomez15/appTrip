@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Usuarios</h1>
+        <div>
+            <a class="btn btn-secondary" th:href="@{/}">Inicio</a>
+            <a class="btn btn-primary" th:href="@{/usuarios/create}">Nuevo Usuario</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Username</th>
+                <th>Activo</th>
+                <th>Perfiles</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.id}"></td>
+                <td th:text="${usuario.nomUsuario}"></td>
+                <td th:text="${usuario.username}"></td>
+                <td th:text="${usuario.activo ? 'ACTIVO' : 'INACTIVO'}"></td>
+                <td>
+                    <span th:each="perfil : ${usuario.perfiles}" class="badge badge-info mr-1" th:text="${perfil.nomPerfil}"></span>
+                </td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/usuarios/edit(id=${usuario.id})}">Editar</a></td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/usuarios/delete(id=${usuario.id})}">Borrar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

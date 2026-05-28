@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Usuario</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 th:text="${usuario.id == null ? 'Crear Usuario' : 'Editar Usuario'}">Formulario Usuario</h1>
+    <form th:action="@{/usuarios/save}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" th:field="*{nomUsuario}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" th:field="*{username}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" th:field="*{password}" th:required="${usuario.id == null}" autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+            <label>Perfiles</label>
+            <select class="form-control" name="perfilesIds" multiple>
+                <option th:each="perfil : ${perfiles}"
+                        th:value="${perfil.id}"
+                        th:selected="${selectedPerfilIds.contains(perfil.id)}"
+                        th:text="${perfil.nomPerfil}">
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" th:field="*{activo}">
+            <label class="form-check-label">Activo</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-secondary" th:href="@{/usuarios/index}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

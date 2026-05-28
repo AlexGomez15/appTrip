@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AppTripApplication<appTrip>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sv.appTrip.AppTripApplication",
+            "projectName": "appTrip",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

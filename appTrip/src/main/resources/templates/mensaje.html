@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensaje</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="alert alert-info" th:text="${mensaje}">Mensaje</div>
+    <a class="btn btn-primary" th:href="@{/tabla}">Volver a tabla</a>
+</div>
+</body>
+</html>

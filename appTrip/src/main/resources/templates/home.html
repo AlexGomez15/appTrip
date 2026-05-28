@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppTrip - Inicio</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">AppTrip</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/tabla}">Tabla Trips</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/categorias/index}">Categorías</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/usuarios/index}">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/roles/index}">Roles</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="jumbotron">
+        <img th:src="@{/images/logo.png}" width="120" alt="Logo AppTrip">
+        <h1 class="display-4">Trips en El Salvador</h1>
+    
+        <a class="btn btn-primary btn-lg" th:href="@{/trips/create}">Crear Trip</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4" th:each="trip : ${trips}">
+            <div class="card h-100">
+                <img class="card-img-top" th:src="@{/images/{img}(img=${trip.imagen})}" alt="Imagen Trip" style="height:180px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${trip.nomTrip}">Nombre Trip</h5>
+                    <p class="card-text" th:text="${trip.descripcion}">Descripción</p>
+                    <p><strong>Costo:</strong> $<span th:text="${trip.costo}">0.00</span></p>
+                    <p><strong>Categoría:</strong> <span th:text="${trip.categoria != null ? trip.categoria.nomCategoria : 'Sin categoría'}">Categoría</span></p>
+                    <a class="btn btn-outline-primary" th:href="@{/trips/view/{id}(id=${trip.id})}">Detalle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

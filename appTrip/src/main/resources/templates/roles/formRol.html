@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Rol</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 th:text="${rol.id == null ? 'Crear Rol' : 'Editar Rol'}">Formulario Rol</h1>
+    <form th:action="@{/roles/save}" th:object="${rol}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label>Nombre del rol</label>
+            <input type="text" class="form-control" th:field="*{nomRol}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" class="form-control" th:field="*{descripcion}" required>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" th:field="*{activo}">
+            <label class="form-check-label">Activo</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-secondary" th:href="@{/roles/index}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
