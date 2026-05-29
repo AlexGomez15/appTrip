@@ -13,7 +13,7 @@ public class Perfil {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nomPerfil", nullable = false, length = 255)
+    @Column(name = "nom_perfil", nullable = false, length = 255)
     private String nomPerfil;
 
     @Column(length = 255)

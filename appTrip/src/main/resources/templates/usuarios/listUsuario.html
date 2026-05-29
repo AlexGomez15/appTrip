@@ -22,6 +22,7 @@
                 <th>Username</th>
                 <th>Activo</th>
                 <th>Perfiles</th>
+                <th>Trips</th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>
@@ -34,6 +35,9 @@
                 <td th:text="${usuario.activo ? 'ACTIVO' : 'INACTIVO'}"></td>
                 <td>
                     <span th:each="perfil : ${usuario.perfiles}" class="badge badge-info mr-1" th:text="${perfil.nomPerfil}"></span>
+                </td>
+                <td>
+                    <span th:each="trip : ${usuario.trips}" class="badge badge-success mr-1" th:text="${trip.nomTrip}"></span>
                 </td>
                 <td><a class="btn btn-warning btn-sm" th:href="@{/usuarios/edit(id=${usuario.id})}">Editar</a></td>
                 <td><a class="btn btn-danger btn-sm" th:href="@{/usuarios/delete(id=${usuario.id})}">Borrar</a></td>

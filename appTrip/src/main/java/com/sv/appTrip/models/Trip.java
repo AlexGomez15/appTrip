@@ -13,7 +13,7 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nomTrip", nullable = false, length = 255)
+    @Column(name = "nom_trip", nullable = false, length = 255)
     private String nomTrip;
 
     @Column(length = 255)
@@ -32,13 +32,13 @@ public class Trip {
     private LocalDateTime fecha = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "idCategoria")
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
     @ManyToMany
     @JoinTable(name = "trip_usuario",
-        joinColumns = @JoinColumn(name = "Trip_id"),
-        inverseJoinColumns = @JoinColumn(name = "Usuario_id"))
+        joinColumns = @JoinColumn(name = "trip_id"),
+        inverseJoinColumns = @JoinColumn(name = "usuario_id"))
     private List<Usuario> usuarios = new ArrayList<>();
 
     public Trip() {}

@@ -13,7 +13,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nomUsuario", nullable = false, length = 255)
+    @Column(name = "nom_usuario", nullable = false, length = 255)
     private String nomUsuario;
 
     @Column(name = "username", nullable = false, length = 255)
@@ -28,8 +28,8 @@ public class Usuario {
 
     @ManyToMany
     @JoinTable(name = "perfil_usuario",
-        joinColumns = @JoinColumn(name = "Usuario_id"),
-        inverseJoinColumns = @JoinColumn(name = "Perfil_id"))
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "perfil_id"))
     private List<Perfil> perfiles = new ArrayList<>();
 
     @ManyToMany(mappedBy = "usuarios")
