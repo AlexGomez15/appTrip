@@ -21,7 +21,7 @@ public class TripServiceImpl implements ITripService {
 
     @Override
     public Trip buscarPorId(Integer idTrip) {
-        return tripRepository.findById(idTrip).orElse(null);
+        return tripRepository.findWithCategoriaAndUsuariosById(idTrip).orElse(null);
     }
 
     @Override
